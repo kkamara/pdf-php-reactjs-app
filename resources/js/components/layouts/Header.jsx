@@ -33,10 +33,9 @@ export default function Header(props) {
       setTokenIsSet(true)
     }
     if(
-      (
-        !tokenIsSet && 
-        window.location.pathname !== "/user/register"
-      )
+      !tokenIsSet && 
+      window.location.pathname !== "/user/register" &&
+      window.location.pathname !== "/pdf"
     ){
       return navigate("/user/login")    
     }
@@ -78,6 +77,9 @@ export default function Header(props) {
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link active" aria-current="page" href="/pdf">PDF Home</a>
           </li>
         </ul>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
