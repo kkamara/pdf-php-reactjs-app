@@ -48,7 +48,7 @@ export default function PdfComponent() {
       <>
         <ul className="list-group">
           {state.pdfs.data.data.map((pdf, index) => (
-            <li key={index} className='list-group-item home-item'>
+            <li key={index} className='list-group-item pdf-item'>
               <strong>name</strong> ({renderLink(pdf)}), 
               <strong>created_at</strong> ({parseDate(pdf.created_at)}),
               <strong>updated_at</strong> ({parseDate(pdf.updated_at)})
@@ -78,6 +78,12 @@ export default function PdfComponent() {
       <div className='container'>
         <br />
         <br />
+        <a 
+          className="btn btn-lg btn-success"
+          onClick={() => { return navigate("/pdf/create") }}
+        >
+          Create
+        </a>
         {renderList()}
         <br />
         <br />
