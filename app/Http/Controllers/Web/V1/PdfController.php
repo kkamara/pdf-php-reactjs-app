@@ -23,6 +23,10 @@ class PdfController extends Controller
     {
         $data = Pdf::paginate(7)
             ->appends($request->query());
+        
+        foreach($data as $d) {
+            unset($d->content);
+        }
 
         return compact("data");
     }
