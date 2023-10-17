@@ -3,7 +3,7 @@ import { useNavigate, } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import ReactPaginate from 'react-paginate'
 import moment from 'moment'
-import { getPdfs, } from "../../../redux/actions/pdfActions"
+import { getPdfs, } from "../../../redux/actions/pdfsActions"
 
 import "./PdfComponent.scss"
 
@@ -75,9 +75,6 @@ export default function PdfComponent() {
         {renderList()}
         <br />
         <br />
-        <button className='btn btn-primary'>
-          Test button
-        </button>
         {false ?
           <>
             <br />

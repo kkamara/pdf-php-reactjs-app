@@ -1,31 +1,31 @@
 
 import HttpService from '../../services/HttpService'
-import { pdf, } from '../types'
+import { pdfs, } from '../types'
 
-export const getPdf = id => {
+export const getPdfs = page => {
   return async dispatch => {
   const http = new HttpService()
         
-  dispatch({ type: pdf.GET_PDF_PENDING, })
+  dispatch({ type: pdfs.GET_PDFS_PENDING, })
 
     const tokenId = "user-token"
-    const path = 'pdf/'+id
+    const path = page ? 'pdf/?page='+page : 'pdf'
     await new Promise((resolve, reject) => {
       http.getData(http.domain+'/sanctum/csrf-cookie').then( 
         http.getData(path, tokenId).then(res => {
           resolve(dispatch({
-            type: pdf.GET_PDF_SUCCESS,
+            type: pdfs.GET_PDFS_SUCCESS,
             payload: res.data.data,
           }))
         }, error => {
           reject(dispatch({ 
-            type : pdf.GET_PDF_ERROR, 
+            type : pdfs.GET_PDFS_ERROR, 
             payload: error,
           }))
         })
       ).catch(error => {
         reject(dispatch({ 
-          type : pdf.GET_PDF_ERROR, 
+          type : pdfs.GET_PDFS_ERROR, 
           payload: error,
         }))
       })

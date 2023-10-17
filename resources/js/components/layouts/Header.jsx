@@ -35,7 +35,8 @@ export default function Header(props) {
     if(
       !tokenIsSet && 
       window.location.pathname !== "/user/register" &&
-      window.location.pathname !== "/pdf"
+      window.location.pathname !== "/pdf" &&
+      null === window.location.pathname.match(/pdf\/.*/g)
     ){
       return navigate("/user/login")    
     }

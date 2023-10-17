@@ -9,6 +9,7 @@ import Logout from "./components/pages/auth/LogoutComponent"
 import Register from "./components/pages/auth/RegisterComponent"
 
 import Pdf from "./components/pages/pdf/PdfComponent"
+import PdfPage from "./components/pages/pdf/PdfPageComponent"
 
 import { url } from './utils/config'
 
@@ -22,6 +23,7 @@ export default () => {
         <Route path={url("/user/logout")} element={<Logout />}/>
         <Route path={url("/user/register")} element={<Register />}/>
         <Route path={url("/pdf")} element={<Pdf />}/>
+        <Route path={url("/pdf/:id")} element={<PdfPage />}/>
       </Routes>
     </>
   )
