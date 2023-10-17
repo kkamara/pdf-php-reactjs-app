@@ -1,19 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web\V1;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePdfRequest;
 use App\Http\Requests\UpdatePdfRequest;
+use App\Http\Resources\V1\PdfResource;
 use App\Models\V1\Pdf;
+use Illuminate\Http\Request;
 
 class PdfController extends Controller
 {
+    public function __construct() 
+    {
+        $this->middleware('auth:sanctum');
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $data = Pdf::paginate(7)
+            ->appends($request->query());
+
+        return compact("data");
     }
 
     /**
@@ -36,14 +47,6 @@ class PdfController extends Controller
      * Display the specified resource.
      */
     public function show(Pdf $pdf)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pdf $pdf)
     {
         //
     }

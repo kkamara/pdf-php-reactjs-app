@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "PDF PHP Reactjs App",
-    "dateExported": "2023-10-17T07:28:28.358Z",
+    "dateExported": "2023-10-17T09:47:45.787Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -41,6 +41,29 @@
                 }
             ],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "6d1475a7-8deb-46ac-8066-09434ea4700c",
+            "colId": "d23be00c-7392-4267-a1c0-d957d0dd1593",
+            "containerId": "",
+            "name": "Get PDFs",
+            "url": "http://localhost:3000/web/pdf",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-10-17T09:46:37.882Z",
+            "modified": "2023-10-17T09:47:37.159Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "1|kcEUDDOj3SQ9Promd1ceuSi8R6Ce1U3qCEssbvo918facd5d"
+            },
             "tests": []
         }
     ]

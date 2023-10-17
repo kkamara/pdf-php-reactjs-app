@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\V1\PdfController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use App\Mail\Test as TestMail;
@@ -27,6 +28,7 @@ Route::prefix('web')->group(function() {
         Route::get('/authorize', [UserController::class,'authorizeUser']);
     });
     Route::get('/users', [UserController::class,'getUsers']);
+    Route::apiResource("pdf", PdfController::class);
 });
 
 Route::get('/job', function() {
