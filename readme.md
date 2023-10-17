@@ -1,4 +1,4 @@
-![php-reactjs-boilerplate.png](https://github.com/kkamara/useful/blob/main/pdf-php-reactjs-app.png?raw=true)
+![php-reactjs-boilerplate.png](https://github.com/kkamara/useful/blob/main/php-reactjs-boilerplate.png?raw=true)
 
 ![php-reactjs-boilerplate2.png](https://github.com/kkamara/useful/blob/main/php-reactjs-boilerplate2.png?raw=true)
 
@@ -32,7 +32,7 @@
 
 [Thunder client](https://www.thunderclient.com/) Visual Studio Code extension.
 
-[thunder-collection_PDF PHP Reactjs App.json](https://github.com/kkamara/php-reactjs-boilerplate/blob/main/database/thunder-collection_PHP%20Reactjs%20Boilerplate.json)
+[thunder-collection_PDF PHP Reactjs App.json](https://github.com/kkamara/pdf-php-reactjs-app/blob/main/database/thunder-collection_PDF%20PHP%20Reactjs%20App.json)
 
 ## Installation
 * [https://laravel.com/docs/9.x/installation](https://laravel.com/docs/9.x/installation)
