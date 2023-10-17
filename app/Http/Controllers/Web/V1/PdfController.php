@@ -21,7 +21,8 @@ class PdfController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Pdf::paginate(7)
+        $data = Pdf::orderByDesc("id")
+            ->paginate(7)
             ->appends($request->query());
         
         foreach($data as $d) {
