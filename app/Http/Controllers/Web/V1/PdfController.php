@@ -52,7 +52,8 @@ class PdfController extends Controller
      */
     public function show(Pdf $pdf)
     {
-        //
+        $data = $pdf;
+        return compact("data");
     }
 
     /**
