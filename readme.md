@@ -1,10 +1,10 @@
-![php-reactjs-boilerplate.png](https://github.com/kkamara/useful/blob/main/php-reactjs-boilerplate.png?raw=true)
+![php-reactjs-boilerplate.png](https://github.com/kkamara/useful/blob/main/pdf-php-reactjs-app.png?raw=true)
 
 ![php-reactjs-boilerplate2.png](https://github.com/kkamara/useful/blob/main/php-reactjs-boilerplate2.png?raw=true)
 
-# PHP Reactjs Boilerplate [![API](https://github.com/kkamara/php-reactjs-boilerplate/actions/workflows/build.yml/badge.svg)](https://github.com/kkamara/php-reactjs-boilerplate/actions/workflows/build.yml)
+# PDF PHP Reactjs App [![API](https://github.com/kkamara/pdf-php-reactjs-app/actions/workflows/build.yml/badge.svg)](https://github.com/kkamara/pdf-php-reactjs-app/actions/workflows/build.yml)
 
-(2021) A GDPR compliant Laravel 10.x boilerplate with redux.
+(17-Oct-2023) Create, View, Edit and Download PDF in a Reactjs App. A GDPR compliant Laravel 10.x app with redux.
 
 * [Using Thunder Client?](#using-thunder-client)
 
@@ -32,7 +32,7 @@
 
 [Thunder client](https://www.thunderclient.com/) Visual Studio Code extension.
 
-[thunder-collection_PHP Reactjs Boilerplate.json](https://github.com/kkamara/php-reactjs-boilerplate/blob/main/database/thunder-collection_PHP%20Reactjs%20Boilerplate.json)
+[thunder-collection_PDF PHP Reactjs App.json](https://github.com/kkamara/php-reactjs-boilerplate/blob/main/database/thunder-collection_PHP%20Reactjs%20Boilerplate.json)
 
 ## Installation
 * [https://laravel.com/docs/9.x/installation](https://laravel.com/docs/9.x/installation)
@@ -96,7 +96,7 @@ sail artisan queue:listen redis --queue stuff
 php artisan test --filter api
 ```
 
-View the unit test code [here](https://raw.githubusercontent.com/kkamara/php-reactjs-boilerplate/main/tests/Unit/Api/UsersTest.php).
+View the unit test code [here](https://raw.githubusercontent.com/kkamara/pdf-php-reactjs-app/main/tests/Unit/Api/UsersTest.php).
 
 ## Browser Tests
 
@@ -111,7 +111,7 @@ You can test the `/mail` endpoint to send a test mail you can then view at `:802
 
 ![docker-mailhog3.png](https://raw.githubusercontent.com/kkamara/useful/main/docker-mailhog3.png)
 
-Mail environment credentials are at [.env](https://raw.githubusercontent.com/kkamara/php-reactjs-boilerplate/main/.env.example).
+Mail environment credentials are at [.env](https://raw.githubusercontent.com/kkamara/pdf-php-reactjs-app/main/.env.example).
 
 The [mailhog](https://github.com/mailhog/MailHog) docker image runs at `http://localhost:8025`.
 
