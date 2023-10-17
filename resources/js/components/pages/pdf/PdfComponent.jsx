@@ -34,6 +34,12 @@ export default function PdfComponent() {
 
   const parseDate = date => moment(date).format('YYYY-MM-DD hh:mm')
 
+  const renderLink = ({ id, name, }) => {
+    return <a href={`/pdf/${id}`}>
+      {name}
+    </a>
+  }
+
   const renderList = () => {
     if (!state.pdfs.data) {
       return null
@@ -43,7 +49,7 @@ export default function PdfComponent() {
         <ul className="list-group">
           {state.pdfs.data.data.map((pdf, index) => (
             <li key={index} className='list-group-item home-item'>
-              <strong>name</strong> ({pdf.name}), 
+              <strong>name</strong> ({renderLink(pdf)}), 
               <strong>created_at</strong> ({parseDate(pdf.created_at)}),
               <strong>updated_at</strong> ({parseDate(pdf.updated_at)})
             </li>
