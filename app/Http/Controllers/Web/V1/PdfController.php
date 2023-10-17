@@ -21,7 +21,8 @@ class PdfController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Pdf::orderByDesc("id")
+        $data = Pdf::where("deleted_at", "=", null)
+            ->orderByDesc("id")
             ->paginate(7)
             ->appends($request->query());
         

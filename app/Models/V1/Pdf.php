@@ -6,16 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Traits\Tappable;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pdf extends Model
 {
     use HasFactory;
     use Tappable;
+    use SoftDeletes;
 
     protected $fillable = [
         "users_id",
         "name",
-        "content"
+        "content",
+        "deleted_at"
     ];
 
     public function user() {
