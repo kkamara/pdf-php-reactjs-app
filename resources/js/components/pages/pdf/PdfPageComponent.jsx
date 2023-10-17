@@ -6,7 +6,7 @@ import { getPdf, } from "../../../redux/actions/pdfActions"
 
 import "./PdfPageComponent.scss"
 
-export default function PdfComponent() {
+export default function PdfPageComponent() {
   const navigate = useNavigate()
   const { id, } = useParams()
 
