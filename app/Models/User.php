@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\V1\Pdf;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -76,4 +77,11 @@ class User extends Authenticatable implements PortableContract
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function pdf() {
+        $this->hasMany(
+            Pdf::class,
+            "users_id"
+        );
+    }
 }
