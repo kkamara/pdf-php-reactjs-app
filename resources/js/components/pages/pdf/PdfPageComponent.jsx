@@ -3,7 +3,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import moment from 'moment'
 import { getPdf, } from "../../../redux/actions/pdfActions"
-import { Document } from 'react-pdf'
 
 import "./PdfPageComponent.scss"
 
@@ -42,7 +41,10 @@ export default function PdfComponent() {
       <div className='container'>
         <br />
         <br />
-        <Document file={state.pdf.data.content} />
+        <embed 
+          type="application/pdf" 
+          src={`data:application/pdf;base64,${state.pdf.data.content}`}
+        />
       </div>
     </>       
   )
