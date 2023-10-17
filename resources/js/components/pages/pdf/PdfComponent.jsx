@@ -3,6 +3,7 @@ import { useNavigate, } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import ReactPaginate from 'react-paginate'
 import moment from 'moment'
+import { getPdfs, } from "../../../redux/actions/pdfActions"
 
 import "./PdfComponent.scss"
 
@@ -12,6 +13,7 @@ export default function PdfComponent() {
   const dispatch = useDispatch()
   const state = useSelector(state => ({
     auth: state.auth,
+    pdfs: state.pdfs
   }))
 
   useEffect(() => {
@@ -19,45 +21,47 @@ export default function PdfComponent() {
       localStorage.removeItem('user-token')
       window.location.href = '/user/login'
     }
-    // Dispatch stuff.
+    dispatch(getPdfs())
   }, [state.auth,])
 
   const handlePageChange = ({ selected, }) => {
     const newPage = selected + 1
-    if (selected > state.users.data.last_page) {
+    if (selected > state.pdfs.data.last_page) {
       return
     }
-    // dispatch(getUsers(newPage))
+    dispatch(getPdfs(newPage))
   }
 
   const parseDate = date => moment(date).format('YYYY-MM-DD hh:mm')
 
   const renderList = () => {
-    if (!state.users.data) {
+    if (!state.pdfs.data) {
       return null
     }
     return (
       <>
         <ul className="list-group">
-          {state.users.data.data.map((user, index) => (
+          {state.pdfs.data.data.map((pdf, index) => (
             <li key={index} className='list-group-item home-item'>
-              <strong>name</strong> ({user.first_name} {user.last_name}), 
-              <strong>email</strong> ({user.email}),
-              <strong>created_at</strong> ({parseDate(user.created_at)}),
-              <strong>updated_at</strong> ({parseDate(user.updated_at)})
+              <strong>name</strong> ({pdf.name}), 
+              <strong>created_at</strong> ({parseDate(pdf.created_at)}),
+              <strong>updated_at</strong> ({parseDate(pdf.updated_at)})
             </li>
           ))}
         </ul>
-        <strong>page</strong> ({state.users.data.current_page}),
-        <strong>page_count</strong> ({state.users.data.last_page}),
-        <strong>displayed_items</strong> ({state.users.data.data.length}),
-        <strong>items</strong> ({state.users.data.total})
+        <strong>page</strong> ({state.pdfs.data.current_page}),
+        <strong>page_count</strong> ({state.pdfs.data.last_page}),
+        <strong>displayed_items</strong> ({state.pdfs.data.data.length}),
+        <strong>items</strong> ({state.pdfs.data.total})
       </>
     )
   }
 
   if (!state.auth.loading && typeof state.auth.data === 'object' && null !== state.auth.data) {
     console.log('authenticated', state.auth.data)
+  }
+  if (!state.pdfs.loading && typeof state.pdfs.data === 'object' && null !== state.pdfs.data) {
+    console.log('pdfs', state.pdfs.data)
   }
   if (state.auth.loading) {
     return <p>Loading...</p>
@@ -68,7 +72,7 @@ export default function PdfComponent() {
       <div className='container'>
         <br />
         <br />
-        {/* {renderList()} */}
+        {renderList()}
         <br />
         <br />
         <button className='btn btn-primary'>
@@ -90,12 +94,12 @@ export default function PdfComponent() {
               breakLabel="..."
               breakClassName="page-item"
               breakLinkClassName="page-link"
-              // pageCount={state.users.data.last_page}
+              pageCount={state.pdfs.data.last_page}
               marginPagesDisplayed={2}
               pageRangeDisplayed={5}
               containerClassName="pagination"
               activeClassName="active"
-              // forcePage={state.users.data.current_page - 1}
+              forcePage={state.pdfs.data.current_page - 1}
             />
           </> : null}
       </div>
