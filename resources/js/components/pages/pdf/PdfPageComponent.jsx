@@ -59,8 +59,9 @@ export default function PdfPageComponent() {
         <embed 
           type="application/pdf" 
           src={`data:application/pdf;base64,${state.pdf.data.content}`}
+          width={1000}
+          height={400}
         />
-        <p>Right click and save document.</p>
       </div>
     </>       
   )
