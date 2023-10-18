@@ -41,12 +41,12 @@ export default function PdfPageComponent() {
       <div className='container'>
         <br />
         <br />
-        <a
+        {state.pdf.data.users_id === state.auth.data.id ? <a
           href={`/pdf/${state.pdf.data.id}/edit`}
           className="btn btn-lg btn-warning"
         >
           Edit
-        </a>
+        </a> : null}
         <br />
         <embed 
           type="application/pdf" 
