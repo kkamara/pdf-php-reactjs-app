@@ -41,17 +41,26 @@ export default function PdfPageComponent() {
       <div className='container'>
         <br />
         <br />
-        {state.pdf.data.users_id === state.auth.data.id ? <a
-          href={`/pdf/${state.pdf.data.id}/edit`}
-          className="btn btn-lg btn-warning"
-        >
-          Edit
-        </a> : null}
+        {state.pdf.data.users_id === state.auth.data.id ? <>
+          <a
+            href={`/pdf/${state.pdf.data.id}/edit`}
+            className="btn btn-lg btn-warning"
+          >
+            Edit
+          </a> &nbsp;
+          <a
+            href={`/pdf/${state.pdf.data.id}/delete`}
+            className="btn btn-lg btn-danger"
+          >
+            Delete
+          </a>
+        </> : null}
         <br />
         <embed 
           type="application/pdf" 
           src={`data:application/pdf;base64,${state.pdf.data.content}`}
         />
+        <p>Right click and save document.</p>
       </div>
     </>       
   )
