@@ -31,6 +31,7 @@ class PdfFactory extends Factory
         return [
             "users_id" => $usersId,
             "name" => fake()->company(),
+            "birthday" => fake()->paragraph(),
             "content" => $content
         ];
     }

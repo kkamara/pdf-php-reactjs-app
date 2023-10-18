@@ -11,7 +11,7 @@ class StorePdfRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,16 @@ class StorePdfRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "name" => [
+                "required", 
+                "min:3", 
+                "max:30"
+            ],
+            "birthday" => [
+                "required", 
+                "min:3",
+                "max:30"
+            ]
         ];
     }
 }
