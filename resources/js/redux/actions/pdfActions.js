@@ -4,9 +4,9 @@ import { pdf, } from '../types'
 
 export const getPdf = id => {
   return async dispatch => {
-  const http = new HttpService()
-        
-  dispatch({ type: pdf.GET_PDF_PENDING, })
+    const http = new HttpService()
+          
+    dispatch({ type: pdf.GET_PDF_PENDING, })
 
     const tokenId = "user-token"
     const path = 'pdf/'+id
