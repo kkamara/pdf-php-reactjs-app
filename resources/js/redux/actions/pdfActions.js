@@ -32,3 +32,34 @@ export const getPdf = id => {
     })
   }
 }
+
+export const createPdf = ({ name, birthday, }) => {
+  return async dispatch => {
+    const http = new HttpService()
+    
+    dispatch({ type: pdf.CREATE_PDF_PENDING, })
+
+    const tokenId = "user-token"
+    const path = 'pdf/'
+    await new Promise((resolve, reject) => {
+      http.getData(http.domain+'/sanctum/csrf-cookie').then( 
+        http.postData(path, { name, birthday }, tokenId).then(res => {
+          resolve(dispatch({
+            type: pdf.CREATE_PDF_SUCCESS,
+            payload: res.data.data,
+          }))
+        }, error => {
+          reject(dispatch({ 
+            type : pdf.CREATE_PDF_ERROR, 
+            payload: error,
+          }))
+        })
+      ).catch(error => {
+        reject(dispatch({ 
+          type : pdf.GET_PDF_ERROR, 
+          payload: error,
+        }))
+      })
+    })
+  }
+}

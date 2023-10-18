@@ -1,13 +1,15 @@
-import React, { useEffect, } from 'react'
+import React, { useEffect, useState, } from 'react'
 import { useNavigate, } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import moment from 'moment'
-import { getPdf, } from "../../../redux/actions/pdfActions"
+import { createPdf, } from "../../../redux/actions/pdfActions"
 
 import "./CreatePdfComponent.scss"
 
 export default function CreatePdfComponent() {
   const navigate = useNavigate()
+  const [name, setName] = useState("")
+  const [birthday, setBirthday] = useState("")
 
   const dispatch = useDispatch()
   const state = useSelector(state => ({
@@ -22,9 +24,32 @@ export default function CreatePdfComponent() {
     }
   }, [state.auth,])
 
+  useEffect(() => {
+    if (
+      !state.pdf.loading && 
+      !state.pdf.error && 
+      state.pdf.data
+    ) {
+      console.log("pdf", state.pdf.data)
+      return navigate("/pdf/"+state.pdf.data.id)
+    }
+  }, [state.pdf,])
+
   const handleSubmitForm = (e) => {
     e.preventDefault()
     // dispatch create pdf.
+    dispatch(createPdf({ name, birthday, }))
+
+    setName("")
+    setBirthday("")
+  }
+
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
+
+  const handleBirthdayChange = (e) => {
+    setBirthday(e.target.value)
   }
 
   const parseDate = date => moment(date).format('YYYY-MM-DD hh:mm')
@@ -44,7 +69,7 @@ export default function CreatePdfComponent() {
         <form 
           method="post" 
           onSubmit={handleSubmitForm}
-          class="form"
+          className="form"
         >
           {state.pdf.error ?
             <div className="alert alert-warning alert-dismissible fade show" role="alert">
@@ -59,6 +84,7 @@ export default function CreatePdfComponent() {
               name="name"
               id="nameInput"
               placeholder="Name..."
+              onChange={handleNameChange}
             />
           </div>
           <div className="form-group">
@@ -69,6 +95,7 @@ export default function CreatePdfComponent() {
               name="birthday"
               id="birthdayInput"
               placeholder="Birthday..."
+              onChange={handleBirthdayChange}
             />
           </div>
           <input
