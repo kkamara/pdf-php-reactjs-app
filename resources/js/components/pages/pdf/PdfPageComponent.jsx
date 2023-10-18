@@ -41,6 +41,13 @@ export default function PdfPageComponent() {
       <div className='container'>
         <br />
         <br />
+        <a
+          href={`/pdf/${state.pdf.data.id}/edit`}
+          className="btn btn-lg btn-warning"
+        >
+          Edit
+        </a>
+        <br />
         <embed 
           type="application/pdf" 
           src={`data:application/pdf;base64,${state.pdf.data.content}`}
