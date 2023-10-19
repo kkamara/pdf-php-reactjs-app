@@ -85,6 +85,7 @@ export default function CreatePdfComponent() {
               id="nameInput"
               placeholder="Name..."
               onChange={handleNameChange}
+              value={name}
             />
           </div>
           <div className="form-group">
@@ -96,6 +97,7 @@ export default function CreatePdfComponent() {
               id="birthdayInput"
               placeholder="Birthday..."
               onChange={handleBirthdayChange}
+              value={birthday}
             />
           </div>
           <input
