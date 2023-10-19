@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Web\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePdfRequest;
-use App\Http\Requests\UpdatePdfRequest;
+use App\Http\Requests\V1\StorePdfRequest;
+use App\Http\Requests\V1\UpdatePdfRequest;
 use App\Models\V1\Pdf;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as DomPdf;
