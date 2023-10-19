@@ -7,6 +7,7 @@ use App\Http\Requests\V1\StorePdfRequest;
 use App\Http\Requests\V1\UpdatePdfRequest;
 use App\Models\V1\Pdf;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Barryvdh\DomPDF\Facade\Pdf as DomPdf;
 
 class PdfController extends Controller
