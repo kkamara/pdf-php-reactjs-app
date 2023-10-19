@@ -56,7 +56,7 @@ class PdfController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pdf $pdf)
+    public function show(Pdf $pdf, Request $request)
     {
         $data = $pdf;
         return compact("data");
@@ -67,7 +67,30 @@ class PdfController extends Controller
      */
     public function update(UpdatePdfRequest $request, Pdf $pdf)
     {
-        //
+        if ($request->method() === "PUT") {
+            $pdf->name = htmlspecialchars($request->input("name"));
+            $pdf->birthday = htmlspecialchars($request->input("birthday"));
+            $domPdf = DomPdf::loadHTML(
+                "<p>Name: {$pdf->name}</p><br/><p>Birthday: {$pdf->birthday}</p>"
+            )->setPaper('a4', 'landscape')->setWarnings(false);
+            $pdf->content = base64_encode($domPdf->output());
+            $pdf->save();
+        } else {
+            if ($request->input("name")) {
+                $pdf->name = htmlspecialchars($request->input("name"));
+            }
+            if ($request->input("birthday")) {
+                $pdf->birthday = htmlspecialchars($request->input("birthday"));
+            }
+            if ($request->input("name") || $request->input("birthday")) {
+                $domPdf = DomPdf::loadHTML(
+                    "<p>Name: {$pdf->name}</p><br/><p>Birthday: {$pdf->birthday}</p>"
+                )->setPaper('a4', 'landscape')->setWarnings(false);
+                $pdf->content = base64_encode($domPdf->output());
+                $pdf->save();
+            }
+        }
+        return ["data" => $pdf];
     }
 
     /**

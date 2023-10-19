@@ -21,8 +21,35 @@ class UpdatePdfRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+        /* Put. */
+        if ($this->method() === "PUT") {
+            return [
+                "name" => [
+                    "required", 
+                    "min:3", 
+                    "max:30"
+                ],
+                "birthday" => [
+                    "required", 
+                    "min:3",
+                    "max:30"
+                ]
+            ];
+        } else { /* Patch. */
+            return [
+                "name" => [
+                    "sometimes",
+                    "required", 
+                    "min:3", 
+                    "max:30"
+                ],
+                "birthday" => [
+                    "sometimes",
+                    "required", 
+                    "min:3",
+                    "max:30"
+                ]
+            ];
+        }
     }
 }
