@@ -17,6 +17,12 @@ export default function PdfPageComponent() {
   }))
 
   useEffect(() => {
+    if (!id) {
+      return navigate("/pdf")
+    }
+  }, [])
+
+  useEffect(() => {
     if (state.auth.error) {
       localStorage.removeItem('user-token')
       window.location.href = '/user/login'
