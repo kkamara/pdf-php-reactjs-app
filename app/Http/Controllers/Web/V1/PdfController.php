@@ -67,6 +67,11 @@ class PdfController extends Controller
      */
     public function update(UpdatePdfRequest $request, Pdf $pdf)
     {
+        if ($request->user()->id !== $pdf->users_id) {
+            return response()->json([
+                "message" => "Unauthorized."
+            ], Response::HTTP_UNAUTHORIZED);
+        }
         if ($request->method() === "PUT") {
             $pdf->name = htmlspecialchars($request->input("name"));
             $pdf->birthday = htmlspecialchars($request->input("birthday"));
