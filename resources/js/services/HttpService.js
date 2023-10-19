@@ -45,6 +45,20 @@ export default class HttpService
     ).then(res => res)
   }
 
+  deleteData = (path, tokenId="") => {
+    let requestOptions = this.deleteRequestOptions()
+    let token
+    if (tokenId.length) {
+      token = localStorage.getItem(tokenId)
+      requestOptions = this.deleteRequestOptions({ token, })
+    }
+
+    return axios.delete(
+      this.url+"/"+path, 
+      { headers: requestOptions.headers }
+    ).then(res => res)
+  }
+
   getData = (path, tokenId="") => {
     let requestOptions = this.getRequestOptions()
     let token
@@ -91,6 +105,17 @@ export default class HttpService
     }
     if (token) {
       requestOptions.headers.Authorization = 'Bearer ' +token
+    }
+    return requestOptions
+  }
+
+  deleteRequestOptions = (param) => {
+    const requestOptions = {
+      method: 'DELETE',
+      headers: { 'Content-type' : 'application/json', },
+    }
+    if (param && param.token) {
+      requestOptions.headers.Authorization = 'Bearer ' + param.token
     }
     return requestOptions
   }

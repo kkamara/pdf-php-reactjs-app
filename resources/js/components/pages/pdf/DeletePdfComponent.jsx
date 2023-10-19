@@ -2,7 +2,7 @@ import React, { useEffect, useState, } from 'react'
 import { useNavigate, useParams, } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import moment from 'moment'
-import { getPdf, /*deletePdf,*/ } from "../../../redux/actions/pdfActions"
+import { getPdf, deletePdf, } from "../../../redux/actions/pdfActions"
 
 import "./DeletePdfComponent.scss"
 
@@ -47,7 +47,14 @@ export default function DeletePdfComponent() {
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
-    // dispatch(deletePdf(id, { choice, }))
+    dispatch(deletePdf(id, { choice, }))
+    if (choice === "y") {
+      return navigate("/pdf")
+    }
+  }
+
+  const handleChoiceChange = (e) => {
+    setChoice(e.target.value)
   }
 
   const parseDate = date => moment(date).format('YYYY-MM-DD hh:mm')
@@ -107,6 +114,7 @@ export default function DeletePdfComponent() {
               id="choice"
               value={choice}
               className="form-control"
+              onChange={handleChoiceChange}
             >
               <option value="n">No</option>
               <option value="y">Yes</option>
