@@ -12,6 +12,7 @@ import Pdf from "./components/pages/pdf/PdfComponent"
 import PdfPage from "./components/pages/pdf/PdfPageComponent"
 import CreatePdf from "./components/pages/pdf/CreatePdfComponent"
 import EditPdf from "./components/pages/pdf/EditPdfComponent"
+import DeletePdf from "./components/pages/pdf/DeletePdfComponent"
 
 import { url } from './utils/config'
 
@@ -28,6 +29,7 @@ export default () => {
         <Route path={url("/pdf/:id")} element={<PdfPage />}/>
         <Route path={url("/pdf/create")} element={<CreatePdf />}/>
         <Route path={url("/pdf/:id/edit")} element={<EditPdf />}/>
+        <Route path={url("/pdf/:id/delete")} element={<DeletePdf />}/>
       </Routes>
     </>
   )
