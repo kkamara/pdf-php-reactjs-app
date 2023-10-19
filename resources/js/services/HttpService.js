@@ -23,9 +23,26 @@ export default class HttpService
       requestOptions = this.postRequestOptions({ token, item, })
     }
 
-    return axios.post(this.url+"/"+path, requestOptions.data, requestOptions.headers).then(
-      res => res
-    )
+    return axios.post(
+      this.url+"/"+path, 
+      requestOptions.data, 
+      { headers: requestOptions.headers, }
+    ).then(res => res)
+  }
+
+  putData = (path, item, tokenId="") => {
+    let requestOptions = this.putRequestOptions({ item, })
+    let token
+    if (tokenId.length) {
+      token = localStorage.getItem(tokenId)
+      requestOptions = this.putRequestOptions({ token, item, })
+    }
+
+    return axios.put(
+      this.url+"/"+path, 
+      requestOptions.data, 
+      { headers: requestOptions.headers }
+    ).then(res => res)
   }
 
   getData = (path, tokenId="") => {
@@ -39,9 +56,8 @@ export default class HttpService
     if (null !== path.match(/http/g)) {
       url = path
     }
-    return axios.get(url, { headers: requestOptions.headers, }).then(
-      res => res
-    )
+    return axios.get(url, { headers: requestOptions.headers, })
+      .then(res => res)
   }
 
   getRequestOptions = (token) => {
@@ -58,6 +74,18 @@ export default class HttpService
   postRequestOptions = ({ token, item, }) => {
     const requestOptions = {
       method: 'POST',
+      headers: { 'Content-type' : 'application/json', },
+      data : item,
+    }
+    if (token) {
+      requestOptions.headers.Authorization = 'Bearer ' +token
+    }
+    return requestOptions
+  }
+
+  putRequestOptions = ({ token, item, }) => {
+    const requestOptions = {
+      method: 'PUT',
       headers: { 'Content-type' : 'application/json', },
       data : item,
     }

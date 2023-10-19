@@ -2,7 +2,7 @@ import React, { useEffect, useState, } from 'react'
 import { useNavigate, useParams, } from 'react-router-dom'
 import { useDispatch, useSelector, } from 'react-redux'
 import moment from 'moment'
-import { getPdf, /* editPdf, */ } from "../../../redux/actions/pdfActions"
+import { getPdf, editPdf, } from "../../../redux/actions/pdfActions"
 
 import "./EditPdfComponent.scss"
 
@@ -46,11 +46,7 @@ export default function EditPdfComponent() {
 
   const handleSubmitForm = (e) => {
     e.preventDefault()
-    // dispatch create pdf.
-    // dispatch(editPdf(id, { name, birthday, }))
-
-    setName("")
-    setBirthday("")
+    dispatch(editPdf(id, { name, birthday, }))
   }
 
   const handleNameChange = (e) => {
