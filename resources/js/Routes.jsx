@@ -11,6 +11,7 @@ import Register from "./components/pages/auth/RegisterComponent"
 import Pdf from "./components/pages/pdf/PdfComponent"
 import PdfPage from "./components/pages/pdf/PdfPageComponent"
 import CreatePdf from "./components/pages/pdf/CreatePdfComponent"
+import EditPdf from "./components/pages/pdf/EditPdfComponent"
 
 import { url } from './utils/config'
 
@@ -26,6 +27,7 @@ export default () => {
         <Route path={url("/pdf")} element={<Pdf />}/>
         <Route path={url("/pdf/:id")} element={<PdfPage />}/>
         <Route path={url("/pdf/create")} element={<CreatePdf />}/>
+        <Route path={url("/pdf/:id/edit")} element={<EditPdf />}/>
       </Routes>
     </>
   )
