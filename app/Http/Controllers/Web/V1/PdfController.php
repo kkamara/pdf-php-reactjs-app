@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\DestroyPdfRequest;
 use App\Http\Requests\V1\StorePdfRequest;
 use App\Http\Requests\V1\UpdatePdfRequest;
 use App\Models\V1\Pdf;
@@ -102,8 +103,12 @@ class PdfController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pdf $pdf)
+    public function destroy(DestroyPdfRequest $request, Pdf $pdf)
     {
-        //
+        if ($request->input("choice") === "y") {
+            $pdf->delete();
+            return response()->noContent();
+        }
+        return ["message" => "Success"];
     }
 }
