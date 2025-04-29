@@ -4,7 +4,7 @@
 
 # PDF PHP Reactjs App [![API](https://github.com/kkamara/pdf-php-reactjs-app/actions/workflows/build.yml/badge.svg)](https://github.com/kkamara/pdf-php-reactjs-app/actions/workflows/build.yml)
 
-(17-Oct-2023) Create, View, Edit and Download PDF in a Reactjs App. A GDPR compliant Laravel 10.x app with redux.
+(17-Oct-2023) Create, view, edit and download PDF in a ReactJS app. A GDPR compliant Laravel 10.x app with Redux.
 
 * [Using Thunder Client?](#using-thunder-client)
 
