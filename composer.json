@@ -2,7 +2,7 @@
     "name": "kkamara/pdf-php-reactjs-app",
     "version": "0.0.1",
     "type": "project",
-    "description": "(17-Oct-2023) Create, View, Edit and Download PDF in a Reactjs App. A GDPR compliant Laravel 10.x app with redux.",
+    "description": "(17-Oct-2023) Create, view, edit and download PDF in a ReactJS app. A GDPR compliant Laravel 10.x app with Redux.",
     "keywords": [
         "web",
         "web-app",
